@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="p:domain_verify" content="ecee8251cbed1760bc5460e7a621eb63"><title>Privacy policy | ShortDramaCost</title><meta name="description" content="How ShortDramaCost handles data, cookies and affiliate links."><link rel="canonical" href="https://shortdramacost.com/privacy/"><meta name="robots" content="noindex,follow"><meta property="og:type" content="article"><meta property="og:title" content="Privacy policy | ShortDramaCost"><meta property="og:description" content="How ShortDramaCost handles data, cookies and affiliate links."><meta property="og:url" content="https://shortdramacost.com/privacy/"><meta property="og:site_name" content="ShortDramaCost"><meta property="og:image" content="https://shortdramacost.com/og/home.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Privacy policy | ShortDramaCost — short drama app prices measured in-app"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Privacy policy | ShortDramaCost"><meta name="twitter:description" content="How ShortDramaCost handles data, cookies and affiliate links."><meta name="twitter:image" content="https://shortdramacost.com/og/home.jpg"><meta name="twitter:image:alt" content="Privacy policy | ShortDramaCost — short drama app prices measured in-app"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1a1a18" media="(prefers-color-scheme: dark)"><link rel="stylesheet" href="/_astro/about.BvncAeQ_.css"></head> <body> <a class="skip" href="#main">Skip to content</a> <header class="site-header"> <div class="wrap inner"> <a class="brand" href="/"> <span class="dot" aria-hidden="true"></span> <span>ShortDramaCost</span> </a> <nav class="site-nav" aria-label="Main"> <a href="/">Best apps</a><a href="/apps/reelshort/">ReelShort</a><a href="/apps/dramabox/">DramaBox</a><a href="/about/">About</a> </nav> </div> </header> <main id="main"> <div class="wrap"> <nav class="crumbs" aria-label="Breadcrumb"> <ol> <li> <a href="/">Home</a> </li><li> <span aria-current="page">Privacy</span> </li> </ol> </nav>  <article> <header class="page-head"> <h1>Privacy policy</h1> <p class="muted">Template — have this reviewed before launch if you operate at any scale.</p> </header> <h2>What this site collects</h2> <p>
+This is a static website. Reading a page does not require an account, and
+      we do not ask you for personal information to read any content on it.
+</p> <h2>Analytics</h2> <p>
+If privacy-friendly analytics are enabled, they record aggregate page views
+      without cookies and without building a profile of you. Insert your specific
+      analytics provider here before launch, or delete this section if you do not
+      run analytics.
+</p> <h2>Affiliate links</h2> <p> Some links on this page are affiliate links. If you sign up through them we may earn a commission at no extra cost to you. This never affects our scores or what we write. When you follow an affiliate link, the destination site
+      and its affiliate network may set their own cookies to attribute the
+      referral. Those cookies are controlled by them, not by us, and are governed
+      by their privacy policies.
+</p> <h2>Third-party links</h2> <p>
+We link to app stores and app publishers. We do not control what those
+      sites do with your data, and this policy does not cover them.
+</p> <h2>Contact</h2> <p>
+Questions about this policy: <a href="mailto:"></a> </p> </article>  </div> </main> <footer class="site-footer"> <div class="wrap"> <nav class="fnav" aria-label="Footer"> <a href="/">Best apps</a> <a href="/apps/reelshort/">ReelShort</a> <a href="/apps/dramabox/">DramaBox</a> <a href="/about/">About</a> <a href="/privacy/">Privacy</a> </nav> <p class="disc"> <strong>Affiliate disclosure:</strong> Some links on this page are affiliate links. If you sign up through them we may earn a commission at no extra cost to you. This never affects our scores or what we write. </p> <p class="disc">Prices are set by the app publishers and change often. Every price on this page was checked in-app on the date shown and may have changed since.</p> <p class="disc"> ShortDramaCost is an independent publication and is not affiliated with, endorsed
+      by, or sponsored by any app publisher named on this site. All trademarks belong
+      to their respective owners.
+</p> <p class="small">© 2026 ShortDramaCost</p> </div> </footer>  <script>
+  (function () {
+    var holder = document.querySelector('[data-track-endpoint]');
+    if (!holder) return;
+    var endpoint = holder.getAttribute('data-track-endpoint');
+    if (!endpoint) return;
+
+    // 全局委托，一次绑定覆盖所有带 data-track-app 的链接，
+    // 后续动态插入的卡片也能被捕获。
+    document.addEventListener(
+      'click',
+      function (e) {
+        var el = e.target instanceof Element ? e.target.closest('a[data-track-app]') : null;
+        if (!el) return;
+
+        var payload = {
+          p: location.pathname,
+          a: el.getAttribute('data-track-app') || '',
+          k: el.getAttribute('data-track-pos') || 'unknown',
+          s: el.getAttribute('data-track-src') || '',
+        };
+
+        // 三项必填缺一不可：不齐就不发，记下来也用不了
+        if (!payload.p || !payload.a || !payload.k) return;
+
+        try {
+          // text/plain 属于简单请求，不会触发 CORS 预检，
+          // 因此页面跳转时 sendBeacon 更容易送达。
+          var blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+          navigator.sendBeacon(endpoint, blob);
+        } catch (err) {
+          /* 统计失败不影响读者跳转，静默 */
+        }
+      },
+      true
+    );
+  })();
+</script> </body></html>
