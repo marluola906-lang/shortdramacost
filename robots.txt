@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# The Sitemap line below is rewritten at build time from SITE_URL in site/site.config.mjs.
+Sitemap: https://shortdramacost.com/sitemap-index.xml

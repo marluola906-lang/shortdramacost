@@ -1,0 +1,39 @@
+# Cloudflare Pages 响应头配置
+# 目的：把静态资源的缓存策略设到最优，同时确保 HTML 不缓存
+#       —— HTML 必须每次回源校验，否则改价后读者会看到旧价格。
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: DENY
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# HTML 不缓存，始终回源校验
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Astro 产出的带 hash 的资源可以长期缓存
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# 图标与图片
+/*.svg
+  Cache-Control: public, max-age=604800
+
+/*.webp
+  Cache-Control: public, max-age=604800
+
+/*.png
+  Cache-Control: public, max-age=604800
+
+# 站点的 sitemap 由 postbuild.mjs 生成，文件名是 sitemap-0.xml + sitemap-index.xml
+# （没有 /sitemap.xml，别按习惯去配一个不存在的路径）
+/sitemap-0.xml
+  Cache-Control: public, max-age=3600
+
+/sitemap-index.xml
+  Cache-Control: public, max-age=3600
